@@ -81,8 +81,8 @@ public class DbController {
     }
 
     @PostMapping ("/generatorCode")
-    public RespMsg generatorCode(@RequestBody List<TableClass> tableClassList, HttpServletRequest req){
-        return generatorCodeService.generateCode(tableClassList,req.getServletContext().getRealPath("/"));
+    public RespMsg generatorCode(@RequestBody List<TableClass> tableClassList){
+        return generatorCodeService.generateCode(tableClassList,"");
     }
 
 

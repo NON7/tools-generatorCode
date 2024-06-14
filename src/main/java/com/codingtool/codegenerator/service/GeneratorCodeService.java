@@ -63,14 +63,15 @@ public class GeneratorCodeService {
                     columnClassList.add(columnClass);
                 }
                 tableClass.setColumns(columnClassList);
-                String path=realPath+"/"+tableClass.getPackageName().replace(".","/");
-                log.info("realPaht:"+realPath);
-                log.info("packageName:"+tableClass.getPackageName());// todo:test packageName's value
+                //java文件
+                String path=realPath+"java/"+tableClass.getPackageName().replace(".","/");
+                //xml文件
+                String path1=realPath+"resources/";
                 generate(modelTemplate,tableClass,path+"/model/");
                 generate(controllerTemplate,tableClass,path+"/controller/");
                 generate(mapperJavaTemplate,tableClass,path+"/mapper/");
                 generate(serviceTemplate,tableClass,path+"/service/");
-                generate(mapperXmlTemplate,tableClass,path+"/mapper/");
+                generate(mapperXmlTemplate,tableClass,path1+"/mapper/");
             }
             return RespMsg.OK("代码已生成："+realPath);
         } catch (IOException | SQLException | TemplateException e) {
